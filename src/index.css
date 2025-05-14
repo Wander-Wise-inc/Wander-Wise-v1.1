@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* --- Blended Color Palette (Earthy + Prominent B G O) --- */
+
+    /* Earthy Tones - Foundation & Elegance */
+    --background-hsl: 30 60% 98%;    /* #FCFAF7 - Very light, warm off-white (Main Page BG) */
+    --foreground-hsl: 25 30% 22%;    /* #423B35 - Dark, rich warm brown (Primary Text) */
+    
+    --card-hsl: 30 50% 97%;         /* #FBF9F7 - Slightly off-white, warm card BG */
+    --card-foreground-hsl: var(--foreground-hsl);
+    --card-border-hsl: 30 35% 90%;   /* #EDEAE6 - Softer beige border for cards */
+
+    --muted-hsl: 30 45% 94%;        /* #F5F2EF - Softer beige (Muted BG elements) */
+    --muted-foreground-hsl: 25 25% 50%; /* #8F8179 - Mid-tone earthy brown (Subtle Text) */
+    
+    --border-hsl: 30 30% 87%;       /* #E8E3DF - General borders */
+    --input-hsl: 30 40% 95%;        /* #F7F4F2 - Input field BG/borders */
+
+    /* Vibrant Tones - Prominent & Professional */
+    /* Blue - Primary Brand / Trust / Impactful */
+    --primary-hsl: 210 75% 48%;     /* #3B82F6 -> A strong, confident blue */
+    --primary-hover-hsl: 210 75% 42%; /* Slightly darker for hover */
+    --primary-rgb: 59, 130, 246;
+    --primary-foreground-hsl: 0 0% 100%; /* White for high contrast */
+
+    /* Green - Supporting / Nature / Sophistication */
+    --supporting-green-hsl: 160 50% 40%; /* #33997E - Sophisticated Teal/Green */
+    --supporting-green-hover-hsl: 160 50% 35%;
+    --supporting-green-foreground-hsl: 0 0% 100%;
+
+    /* Orange/Gold - Accent / CTA / Energy (Rich & Warm, not overly bright) */
+    --accent-hsl: 30 90% 55%;       /* #FCAE4F - Rich, warm Gold/Orange */
+    --accent-hover-hsl: 30 90% 50%;
+    --accent-rgb: 252, 174, 79;
+    --accent-foreground-hsl: 25 30% 15%; /* Dark brown/black for good contrast on gold */
+    
+    /* Semantic Colors */
+    --destructive-hsl: 0 70% 55%; 
+    --destructive-foreground-hsl: 0 0% 100%;
+    --success-hsl: 130 55% 45%; 
+    --success-foreground-hsl: 0 0% 100%;
+    
+    --ring-hsl: var(--primary-hsl); /* Focus rings use primary blue */
+
+    /* Radii & Fonts (from previous, good as is) */
+    --radius-sm: 0.375rem; --radius-md: 0.625rem; --radius-lg: 0.875rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+    --font-sans: 'Lato', 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-cursive: 'Pacifico', cursive;
+
+    /* --- Convert HSL to be usable by Tailwind's hsl() function --- */
+    --primary: var(--primary-hsl);
+    --primary-hover: var(--primary-hover-hsl);
+    --primary-foreground: var(--primary-foreground-hsl);
+    
+    --secondary: var(--supporting-green-hsl); 
+    --secondary-hover: var(--supporting-green-hover-hsl);
+    --secondary-foreground: var(--supporting-green-foreground-hsl);
+    
+    --accent: var(--accent-hsl);
+    --accent-hover: var(--accent-hover-hsl);
+    --accent-foreground: var(--accent-foreground-hsl);
+    
+    --muted: var(--muted-hsl);
+    --muted-foreground: var(--muted-foreground-hsl);
+    --destructive: var(--destructive-hsl);
+    --destructive-foreground: var(--destructive-foreground-hsl);
+    --success: var(--success-hsl);
+    --success-foreground: var(--success-foreground-hsl);
+    --background: var(--background-hsl);
+    --foreground: var(--foreground-hsl);
+    --card: var(--card-hsl);
+    --card-foreground: var(--card-foreground-hsl);
+    --card-border: var(--card-border-hsl);
+    --popover: var(--card-hsl);
+    --popover-foreground: var(--card-foreground-hsl);
+    --border: var(--border-hsl);
+    --input: var(--input-hsl);
+    --ring: var(--ring-hsl);
+  }
+
+  .dark { /* Dark Mode - ensure B G O are still prominent and professional */
+    --background-hsl: 210 12% 10%;    /* Very Dark Blue-Gray */
+    --foreground-hsl: 30 25% 88%;    /* Light Creamy Text */
+    
+    --card-hsl: 210 12% 13%;         /* Slightly Lighter Dark Card BG */
+    --card-border-hsl: 210 10% 20%;   
+
+    --muted-hsl: 210 10% 16%;       
+    --muted-foreground-hsl: 30 20% 65%; 
+
+    --primary-hsl: 208 80% 55%;     /* Brighter blue for dark mode */
+    --primary-hover-hsl: 208 80% 50%;
+    --primary-foreground-hsl: 210 50% 98%;
+
+    --supporting-green-hsl: 160 50% 50%; /* Brighter green for dark mode */
+    --supporting-green-hover-hsl: 160 50% 45%;
+    --supporting-green-foreground-hsl: 0 0% 100%;
+
+    --accent-hsl: 35 95% 60%;       /* Brighter gold for dark mode */
+    --accent-hover-hsl: 35 95% 55%;
+    --accent-foreground-hsl: 25 30% 10%; 
+  }
+}
+
+@layer base {
+  * { @apply border-border transition-colors duration-200; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { @apply scroll-smooth antialiased; font-feature-settings: 'liga' 1, 'calt' 1; }
+  body { @apply bg-background text-foreground; font-family: var(--font-sans); line-height: 1.75; margin: 0; padding: 0; overflow-x: hidden; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); @apply text-foreground font-bold tracking-tight; }
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl mb-4 mt-2; }
+  h2 { @apply text-3xl md:text-4xl mb-3 mt-1.5; }
+  h3 { @apply text-2xl md:text-3xl mb-2 mt-1; }
+  p { @apply mb-4 max-w-prose text-base; }
+  a { @apply text-accent hover:text-accent-hover font-medium transition-colors duration-150 ease-in-out; text-decoration-skip-ink: auto; }
+  *:focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background rounded-md; }
+  .glass-effect { @apply bg-card/50 backdrop-blur-xl border border-card-border/30 shadow-2xl; } /* Slightly adjusted glass */
+}
+
+.shadow-text { text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0,0,0,0.15); } /* Enhanced shadow */
+.shadow-text-sm { text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35); }
+
+.custom-scrollbar::-webkit-scrollbar { width: 7px; height: 7px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: hsl(var(--muted) / 0.2); border-radius: var(--radius-full); }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.5); border-radius: var(--radius-full); transition: background 0.2s ease-in-out; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.8); }
+
+.text-gradient-primary-accent { @apply bg-gradient-to-r from-primary via-accent to-accent bg-clip-text text-transparent; }
+
+/* Updated animated gradient background for hero with more prominent B G O */
+.animated-gradient-hero {
+  background: linear-gradient(120deg, 
+    hsl(var(--primary-hsl) / 0.7),      /* Blue */
+    hsl(var(--supporting-green-hsl) / 0.6), /* Green */
+    hsl(var(--accent-hsl) / 0.7),       /* Orange/Gold */
+    hsl(var(--primary-hsl) / 0.55),     /* Blue again for smooth loop */
+    hsl(var(--supporting-green-hsl) / 0.65) /* Green again */
+  );
+  background-size: 400% 400%; 
+  animation: gradientWave 18s ease infinite; 
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
