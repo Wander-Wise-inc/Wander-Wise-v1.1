@@ -33,7 +33,7 @@ function Hero() {
       if (document.getElementById('google-maps-script-hero')) return;
       const script = document.createElement('script');
       script.id = 'google-maps-script-hero';
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_Maps_API_KEY}&libraries=places&callback=initAutocompleteHero`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initAutocompleteHero`;
       script.async = true; script.defer = true;
       window.initAutocompleteHero = () => setIsScriptLoaded(true);
       script.onerror = () => console.error("Hero: Google Maps script could not be loaded.");

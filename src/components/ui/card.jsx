@@ -1,4 +1,3 @@
-// src/components/ui/Card.jsx
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -112,5 +111,32 @@ const CardImage = React.forwardRef(({ className, src, alt, wrapperClassName, ...
 ));
 CardImage.displayName = "CardImage";
 
+// Create a fallback CardFooter in case the import fails
+if (typeof window !== 'undefined') {
+  // Only create the fallback in browser environments
+  if (!window.CardFooter) {
+    window.CardFooter = CardFooter;
+  }
+}
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, CardImage }
+// Make sure all components are exported properly
+export { 
+  Card, 
+  CardHeader, 
+  CardFooter, 
+  CardTitle, 
+  CardDescription, 
+  CardContent, 
+  CardImage 
+}
+
+// Add a default export as a fallback for different import syntaxes
+export default {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardImage
+}

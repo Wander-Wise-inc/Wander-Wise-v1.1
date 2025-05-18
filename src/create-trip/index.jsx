@@ -11,6 +11,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { tripsService } from '../services/tripsService';
 import { auth } from '../service/firebaseConfig';
 
+
 const CreateTrip = () => {
   const navigate = useNavigate();
   const location = useLocation();
